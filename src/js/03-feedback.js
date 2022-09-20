@@ -3,10 +3,7 @@ const throttle = require('lodash.throttle');
 const formRef = document.querySelector('.feedback-form');
 const STORAGE_KEY= 'feedback-form-state';
 
-let formData = {
-    email: "",
-    message: "",
-};
+let formData = {};
 
 onInputForm();
 formRef.addEventListener('input', throttle(onInput, 500));
@@ -30,7 +27,13 @@ function onInput(evt) {
 
 function onFormSubmit(evt) {
     evt.preventDefault();
+    if (formData.email === "" || formData.message === "") {
+        alert("Всі поля повинні бути заповнені");
+        return;
+    };
+    
     console.log('This is Form Data:', formData);
-    evt.currentTarget.reset();
+    evt.target.reset();
     localStorage.removeItem(STORAGE_KEY);
+    formData = {};
 }
