@@ -28,12 +28,12 @@ function onInput(evt) {
 function onFormSubmit(evt) {
     evt.preventDefault();
     if (formData.email === "" || formData.message === "") {
-        alert("Всі поля повинні бути заповнені");
+        window.alert("Всі поля повинні бути заповнені");
         return;
-    };
-    
-    console.log('This is Form Data:', formData);
-    evt.target.reset();
-    localStorage.removeItem(STORAGE_KEY);
-    formData = {};
+    } else {
+        console.log('This is Form Data:', formData);
+        evt.target.reset();
+        localStorage.removeItem(STORAGE_KEY);
+        formData = {};
+    }
 }
