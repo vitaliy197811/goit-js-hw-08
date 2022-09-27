@@ -27,7 +27,7 @@ function onInput(evt) {
 
 function onFormSubmit(evt) {
     evt.preventDefault();
-    if (formData.email === "" || formData.message === "") {
+    if (!formData.email || !formData.message) {
         window.alert("Всі поля повинні бути заповнені");
         return;
     } else {
